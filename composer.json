@@ -1,0 +1,20 @@
+{
+  "name": "daun/processwire-datetime-carbon-format",
+  "type": "pw-module",
+  "description": "Format Datetime fields as Carbon instances",
+  "keywords": [ "processwire", "module", "carbon", "datetime" ],
+  "homepage": "https://github.com/daun/processwire-datetime-carbon-format",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Philipp Daun",
+      "email": "post@philippdaun.net",
+      "homepage": "https://philippdaun.net"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "hari/pw-module": "~1.0",
+    "nesbot/carbon": "^2.0"
+  }
+}

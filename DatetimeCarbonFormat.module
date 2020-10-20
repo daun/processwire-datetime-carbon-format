@@ -1,0 +1,192 @@
+<?php
+
+namespace ProcessWire;
+
+use Carbon\Carbon;
+use Carbon\Factory;
+use Carbon\Translator;
+use Daun\OptionalValue;
+
+wire('classLoader')->addNamespace('Daun', __DIR__ . '/lib');
+
+/**
+ * Datetime Carbon Format
+ *
+ * Format Datetime fields as Carbon instances.
+ *
+ * @author Philipp Daun <post@philippdaun.net>
+ * @license MIT
+ *
+ * @version 1.0.0
+ */
+
+class DatetimeCarbonFormat extends WireData implements Module
+{
+    public static function getModuleInfo()
+    {
+        return [
+            'title'    => __('Datetime Carbon Format', __FILE__),
+            'summary'  => __('Format Datetime fields as Carbon instances', __FILE__),
+            'href'     => 'https://github.com/daun/processwire-datetime-carbon-format',
+            'author'   => 'Philipp Daun',
+            'version'  => '1.0.0',
+            'icon'     => 'clock',
+            'autoload' => true,
+            'singular' => true,
+            'requires' => [
+                'PHP>=7.0',
+                'ProcessWire>=3.0.123',
+            ],
+        ];
+    }
+
+    /**
+     * Carbon factory used to create date instances
+     */
+    protected static $carbonFactory = null;
+
+    /**
+     * Default timezone to use
+     */
+    protected $timezone = '';
+
+    /**
+     * Flag to check if current request is an admin view
+     */
+    protected $isAdmin = false;
+
+    /**
+     * Init
+     */
+    public function init() {
+        $this->timezone = $this->wire()->config->timezone;
+        $this->isAdmin = $this->isAdminView();
+    }
+
+    /**
+     * Ready
+     */
+    public function ready() {
+        $this->wireCarbonApiVariable();
+        $this->setCustomTranslations();
+        $this->installCarbonAsFormattedDatetimeValue();
+    }
+
+    /**
+     * Wire Carbon factory instance as API variable
+     */
+    protected function wireCarbonApiVariable() {
+        $this->wire('carbon', $this->createCarbonFactory(), true);
+    }
+
+    /**
+     * Create a Carbon factory object from current locale and timezone
+     *
+     * @return Carbon\Factory Carbon factory instance with pre-set configuration
+     */
+    protected function createCarbonFactory() {
+        if (!static::$carbonFactory) {
+            $factory = new Factory([
+                'timezone' => $this->timezone,
+                'locale' => $this->locale(),
+            ]);
+            $factory->useStrictMode(false);
+            static::$carbonFactory = $factory;
+        }
+
+        return static::$carbonFactory;
+    }
+
+    /**
+     * Hook into all datetime fields and return a Carbon instance as formatted value
+     */
+    protected function installCarbonAsFormattedDatetimeValue() {
+        $this->wire->addHookBefore('FieldtypeDatetime::formatValue', function (HookEvent $event) {
+            // Leave datetime fields as-is in the admin
+            if ($this->isAdmin) return;
+
+            $field = $event->arguments('field');
+            $value = $event->arguments('value');
+
+            $event->return = $this->createCarbonInstanceFromDatetimeFieldValue($field, $value);
+            $event->replace = true;
+        });
+    }
+
+    /**
+     *  Return a Carbon instance from a datetime field value
+     */
+    protected function createCarbonInstanceFromDatetimeFieldValue($field, $value) {
+        $timestamp = $value;
+
+        if ($timestamp) {
+            $format = $this->getDateFieldOutputFormat($field);
+            $strftime = strpos($format, '%') !== false;
+            $datetime = $this->wire()->carbon->createFromTimestamp($timestamp, $this->timezone);
+            $datetime->settings([
+                'formatFunction' => 'translatedFormat',
+                'toStringFormat' => function ($carbon) use ($format, $strftime) {
+                    return $strftime ? $carbon->formatLocalized($format) : $carbon->format($format);
+                },
+            ]);
+        }
+
+        return OptionalValue::make($datetime ?? null);
+    }
+
+    /**
+     * Get date output format of a datetime field
+     *
+     * @return void
+     */
+    protected function getDateFieldOutputFormat($field) {
+        $format = '';
+
+        $language = $this->wire()->languages ? $this->wire()->user->language : null;
+        if ($language && !$language->isDefault()) $format = $field->get("dateOutputFormat{$language}");
+        if (!$format) $format = $field->get('dateOutputFormat');
+
+        return $format;
+    }
+
+    /**
+     * Set custom translation for Carbon instances
+     *
+     * Currently used to override the Austrian version of January
+     *
+     * @return void
+     */
+    protected function setCustomTranslations() {
+        $custom = $this->customTranslations() ?? [];
+        foreach ($custom as $locale => $translations) {
+            Translator::get($locale)->setTranslations($translations);
+        }
+    }
+
+    /**
+     * Hook to get custom translations
+     */
+    protected function __customTranslations() {
+        return [];
+    }
+
+    /**
+     * Hook to determine locale
+     *
+     * @return string|null
+     */
+    protected function ___locale() {
+        return setlocale(LC_TIME, 0);
+    }
+
+    /**
+     * Check if current request is an admin view
+     *
+     * @return bool
+     */
+    protected function isAdminView() {
+        $current = $this->wire()->input->url;
+        $admin = $this->wire()->config->urls->admin;
+        return strpos($current, $admin) === 0;
+    }
+}
