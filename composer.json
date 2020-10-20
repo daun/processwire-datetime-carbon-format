@@ -1,5 +1,5 @@
 {
-  "name": "daun/processwire-datetime-carbon-format",
+  "name": "daun/datetime-carbon-format",
   "type": "pw-module",
   "description": "Format Datetime fields as Carbon instances",
   "keywords": [ "processwire", "module", "carbon", "datetime" ],

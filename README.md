@@ -10,7 +10,7 @@ Format Datetime fields as [Carbon](https://carbon.nesbot.com/) instances.
 Install the module using Composer. This will install Carbon as a child dependency.
 
 ```bash
-composer require daun/processwire-datetime-carbon-format
+composer require daun/datetime-carbon-format
 ```
 
 > ℹ️ Installation via the module directory will only work if you already have `nesbot/carbon` required from the project root.
