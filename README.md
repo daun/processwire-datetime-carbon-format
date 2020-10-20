@@ -46,16 +46,18 @@ When casting a Carbon instance to a string (usually when outputting the field in
 
 Empty date fields will be wrapped in a proxy object that silently "swallows" access to properties and methods without triggering an exception. That's because Carbon instances cannot be empty, i.e. created without a valid timestamp value.
 
-Check the `timestamp` property to see if a date has a value.
+Use either the `timestamp` property or the `isset` accessor to see if a date has a value.
 
 ```php
 // Date field with data
 $page->date->timestamp;    // 1578870000
+$page->date->isset;        // true
 $page->date->year;         // 2020
 $page->date->format('j');  // 20
 
 // Empty date field
 $page->date->timestamp;    // null
+$page->date->isset;        // null
 $page->date->year;         // null
 $page->date->format('j');  // null
 ```

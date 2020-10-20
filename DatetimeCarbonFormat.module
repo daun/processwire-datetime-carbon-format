@@ -17,7 +17,7 @@ wire('classLoader')->addNamespace('Daun', __DIR__ . '/lib');
  * @author Philipp Daun <post@philippdaun.net>
  * @license MIT
  *
- * @version 1.1.1
+ * @version 1.1.2
  */
 
 class DatetimeCarbonFormat extends WireData implements Module
@@ -29,7 +29,7 @@ class DatetimeCarbonFormat extends WireData implements Module
             'summary'  => __('Format Datetime fields as Carbon instances', __FILE__),
             'href'     => 'https://github.com/daun/processwire-datetime-carbon-format',
             'author'   => 'Philipp Daun',
-            'version'  => '1.1.1',
+            'version'  => '1.1.2',
             'icon'     => 'clock',
             'autoload' => true,
             'singular' => true,
@@ -128,6 +128,7 @@ class DatetimeCarbonFormat extends WireData implements Module
                 'toStringFormat' => function ($carbon) use ($format, $strftime) {
                     return $strftime ? $carbon->formatLocalized($format) : $carbon->format($format);
                 },
+                'macros' => [ 'getIsset' => function () { return true; } ],
             ]);
         }
 
