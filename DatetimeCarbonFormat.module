@@ -17,7 +17,7 @@ wire('classLoader')->addNamespace('Daun', __DIR__ . '/lib');
  * @author Philipp Daun <post@philippdaun.net>
  * @license MIT
  *
- * @version 1.1.2
+ * @version 1.1.3
  */
 
 class DatetimeCarbonFormat extends WireData implements Module

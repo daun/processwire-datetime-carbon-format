@@ -14,7 +14,7 @@
   ],
   "require": {
     "php": ">=7.0",
-    "hari/pw-module": "~1.0",
-    "nesbot/carbon": "^2.0"
+    "nesbot/carbon": "^2.0",
+    "wireframe-framework/processwire-composer-installer": "^1.0"
   }
 }

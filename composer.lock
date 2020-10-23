@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "10d40211a9c4e4ffe0107205f1b81499",
+    "content-hash": "a1afd5512555e7a2f6fb2d8caa835e45",
     "packages": [
         {
             "name": "hari/pw-module",
@@ -135,16 +135,6 @@
                 "datetime",
                 "time"
             ],
-            "funding": [
-                {
-                    "url": "https://opencollective.com/Carbon",
-                    "type": "open_collective"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/nesbot/carbon",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-10-12T20:36:09+00:00"
         },
         {
@@ -207,20 +197,6 @@
                 "polyfill",
                 "portable",
                 "shim"
-            ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -287,20 +263,6 @@
                 "polyfill",
                 "portable",
                 "shim"
-            ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -380,20 +342,6 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-09-27T03:44:28+00:00"
         },
         {
@@ -455,21 +403,54 @@
                 "interoperability",
                 "standards"
             ],
-            "funding": [
+            "time": "2020-09-28T13:05:58+00:00"
+        },
+        {
+            "name": "wireframe-framework/processwire-composer-installer",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wireframe-framework/processwire-composer-installer.git",
+                "reference": "c63afc77fb53cef1293d7b50213885113aaba30e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wireframe-framework/processwire-composer-installer/zipball/c63afc77fb53cef1293d7b50213885113aaba30e",
+                "reference": "c63afc77fb53cef1293d7b50213885113aaba30e",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "hari/pw-module": "^1.0.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "wireframe\\ComposerInstaller\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "wireframe\\ComposerInstaller\\": "src/ComposerInstaller/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MPL-2.0"
+            ],
+            "authors": [
                 {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
+                    "name": "Teppo Koivula",
+                    "email": "teppo@wireframe-framework.com",
+                    "homepage": "https://wireframe-framework.com"
                 }
             ],
-            "time": "2020-09-28T13:05:58+00:00"
+            "description": "Custom Composer installer for the ProcessWire CMS/CMF modules and site profiles.",
+            "homepage": "https://wireframe-framework.com/docs/processwire-composer-installer/",
+            "keywords": [
+                "composer",
+                "installer",
+                "processwire"
+            ],
+            "time": "2020-10-19T21:03:11+00:00"
         }
     ],
     "packages-dev": [],
@@ -481,6 +462,5 @@
     "platform": {
         "php": ">=7.0"
     },
-    "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "platform-dev": []
 }
