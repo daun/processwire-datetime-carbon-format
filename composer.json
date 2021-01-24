@@ -1,6 +1,6 @@
 {
   "name": "daun/datetime-carbon-format",
-  "type": "pw-module",
+  "type": "processwire-module",
   "description": "Format Datetime fields as Carbon instances",
   "keywords": [ "processwire", "module", "carbon", "datetime" ],
   "homepage": "https://github.com/daun/processwire-datetime-carbon-format",
@@ -15,6 +15,6 @@
   "require": {
     "php": ">=7.0",
     "nesbot/carbon": "^2.0",
-    "wireframe-framework/processwire-composer-installer": "^1.0"
+    "composer/installers": "~1.0"
   }
 }
