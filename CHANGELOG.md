@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.4] - 2025-05-14
+
+- Use correct iso formatter
+- Remove deprecated empty property
+- Return object if not empty
+
 ## [2.0.3] - 2025-05-14
 
 - Rename module file
@@ -24,6 +30,7 @@
 
 - Initial release
 
+[2.0.4]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.4
 [2.0.3]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.3
 [2.0.2]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.2
 [2.0.1]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.1
