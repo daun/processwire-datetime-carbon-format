@@ -31,10 +31,6 @@ class OptionalValue implements \Stringable
      */
     public static function make($value = null)
     {
-        if (is_object($value)) {
-            $value->empty = false;
-            return $value;
-        }
         return new OptionalValue($value);
     }
 
