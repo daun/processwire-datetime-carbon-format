@@ -11,24 +11,16 @@ namespace Daun;
  *
  */
 
-class OptionalValue
+class OptionalValue implements \Stringable
 {
-    /**
-     * The underlying object.
-     *
-     * @var mixed
-     */
-    protected $value;
-
     /**
      * Create a new instance.
      *
      * @param  mixed  $value
      * @return void
      */
-    public function __construct($value)
+    public function __construct(protected $value)
     {
-        $this->value = $value;
     }
 
     /**
@@ -95,7 +87,7 @@ class OptionalValue
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (is_object($this->value)) {
             return (string) $this->value;

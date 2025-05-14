@@ -23,10 +23,10 @@ All Datetime fields will now be formatted as Carbon instances instead of strings
 // $page->date is a Datetime field
 // Output format: j/n/Y
 
-echo $page->date;                    // 20/10/2020
-echo $page->date->add('7 days');     // 27/10/2020
+echo $page->date;                    // 20/10/2027
+echo $page->date->add('7 days');     // 27/10/2027
 echo $page->date->format('l, F j');  // Monday, October 20
-echo $page->date->year;              // 2020
+echo $page->date->year;              // 2027
 echo $page->date->diffForHumans();   // 28 minutes ago
 ```
 
@@ -50,9 +50,9 @@ Use either the `timestamp` property or the `isset` accessor to see if a date has
 
 ```php
 // Date field with data
-$page->date->timestamp;    // 1578870000
+$page->date->timestamp;    // 1778870000
 $page->date->isset;        // true
-$page->date->year;         // 2020
+$page->date->year;         // 2027
 $page->date->format('j');  // 20
 
 // Empty date field

@@ -44,7 +44,7 @@ class DatetimeCarbonFormat extends WireData implements Module
     /**
      * Carbon factory used to create date instances
      */
-    protected static $carbonFactory = null;
+    protected static $carbonFactory;
 
     /**
      * Default timezone to use
@@ -102,7 +102,7 @@ class DatetimeCarbonFormat extends WireData implements Module
      * Hook into all datetime fields and return a Carbon instance as formatted value
      */
     protected function installCarbonAsFormattedDatetimeValue() {
-        $this->wire->addHookBefore('FieldtypeDatetime::formatValue', function (HookEvent $event) {
+        $this->wire->addHookBefore('FieldtypeDatetime::formatValue', function (HookEvent $event): void {
             // Leave datetime fields as-is in the admin
             if ($this->isAdmin) return;
 
@@ -122,14 +122,12 @@ class DatetimeCarbonFormat extends WireData implements Module
 
         if ($timestamp) {
             $format = $this->getDateFieldOutputFormat($field);
-            $strftime = strpos($format, '%') !== false;
+            $strftime = str_contains((string) $format, '%');
             $datetime = $this->wire()->carbon->createFromTimestamp($timestamp, $this->timezone);
             $datetime->settings([
                 'formatFunction' => 'translatedFormat',
-                'toStringFormat' => function ($carbon) use ($format, $strftime) {
-                    return $strftime ? $carbon->formatLocalized($format) : $carbon->format($format);
-                },
-                'macros' => [ 'getIsset' => function () { return true; } ],
+                'toStringFormat' => fn($carbon) => $strftime ? $carbon->formatLocalized($format) : $carbon->format($format),
+                'macros' => [ 'getIsset' => fn(): bool => true ],
             ]);
         }
 
@@ -189,6 +187,6 @@ class DatetimeCarbonFormat extends WireData implements Module
     protected function isAdminView() {
         $current = $this->wire()->input->url;
         $admin = $this->wire()->config->urls->admin;
-        return strpos($current, $admin) === 0;
+        return str_starts_with((string) $current, (string) $admin);
     }
 }
