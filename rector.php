@@ -9,7 +9,7 @@ return RectorConfig::configure()
         __DIR__ . '/lib',
     ])
     ->withRootFiles()
-    ->withPhpSets()
-    ->withTypeCoverageLevel(0)
-    ->withDeadCodeLevel(0)
-    ->withCodeQualityLevel(0);
+    ->withPhpSets(php81: true)
+    ->withTypeCoverageLevel(10)
+    ->withDeadCodeLevel(10)
+    ->withCodeQualityLevel(10);
