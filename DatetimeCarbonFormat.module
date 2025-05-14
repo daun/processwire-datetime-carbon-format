@@ -35,7 +35,7 @@ class DatetimeCarbonFormat extends WireData implements Module
             'autoload' => true,
             'singular' => true,
             'requires' => [
-                'PHP>=7.0',
+                'PHP>=8.1',
                 'ProcessWire>=3.0.123',
             ],
         ];
