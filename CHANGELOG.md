@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.0.1] - 2025-05-14
+
+- Downgrade composer installers requirement
+
 ## [2.0.0] - 2025-05-14
 
 - Upgrade Carbon to v3
@@ -12,6 +16,7 @@
 
 - Initial release
 
+[2.0.1]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.1
 [2.0.0]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.0
 [1.1.0]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v1.1.0
 [1.0.0]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v1.0.0
