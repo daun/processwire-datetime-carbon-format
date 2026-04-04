@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.0.6] - 2026-04-04
+
+- Bump version
+
 ## [2.0.5] - 2026-04-04
 
 - Use correct locale during instance creation
@@ -34,6 +38,7 @@
 
 - Initial release
 
+[2.0.6]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.6
 [2.0.5]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.5
 [2.0.4]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.4
 [2.0.3]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.3
