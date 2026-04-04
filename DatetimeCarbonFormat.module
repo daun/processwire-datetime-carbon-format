@@ -125,6 +125,7 @@ class DatetimeCarbonFormat extends WireData implements Module
             $strftime = str_contains((string) $format, '%');
             $datetime = $this->wire()->carbon->createFromTimestamp($timestamp, $this->timezone);
             $datetime->settings([
+                'locale' => $this->locale(),
                 'formatFunction' => 'translatedFormat',
                 'toStringFormat' => fn($carbon) => $strftime ? $carbon->isoFormat($format) : $carbon->format($format),
                 'macros' => [ 'getIsset' => fn(): bool => true ],
