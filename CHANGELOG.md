@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.0.5] - 2026-04-04
+
+- Use correct locale during instance creation
+
 ## [2.0.4] - 2025-05-14
 
 - Use correct iso formatter
@@ -30,6 +34,7 @@
 
 - Initial release
 
+[2.0.5]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.5
 [2.0.4]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.4
 [2.0.3]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.3
 [2.0.2]: https://github.com/daun/processwire-datetime-carbon-format/releases/tag/v2.0.2
